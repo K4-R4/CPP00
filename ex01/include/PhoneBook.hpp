@@ -6,13 +6,14 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:03:57 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/10/16 22:42:58 by kura             ###   ########.fr       */
+/*   Updated: 2023/10/17 00:29:05 by kura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONE_BOOK_HPP
 # define PHONE_BOOK_HPP
 
+#include <string>
 #include "Contact.hpp"
 
 class PhoneBook {
@@ -21,11 +22,15 @@ private:
 	static const int COLUMN_WIDTH = 10;
 	int idx;
 	Contact contacts[MAX_CONTACT];
+
+	static std::string truncateString(std::string s);
 public:
-	PhoneBook(void);
+	PhoneBook();
 
 	void addContact(Contact contact);
-	void printBriefContactList(void);
+
+	void printBriefContactList();
+
 	void printContactDetail(int idx);
 };
 
