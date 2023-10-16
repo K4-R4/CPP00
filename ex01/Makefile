@@ -12,7 +12,6 @@ DEPENDS  := $(OBJS:.o=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS)
-	echo $(OBJS)
 	$(CXX) -o $@ $^ $(INCLUDE) $(CXXFLAGS) $(if $(DEBUG),$(DFLAGS),)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
@@ -20,7 +19,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) $(if $(DEBUG),$(DFLAGS),) $(INCLUDE) -o $@ -c $<
 
 clean:
-	$(RM) -r $(OBJS) $(DEPENDS)
+	$(RM) -r $(OBJDIR)
 
 fclean: clean
 	$(RM) $(NAME)
