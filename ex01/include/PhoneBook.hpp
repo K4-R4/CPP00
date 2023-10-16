@@ -24,6 +24,7 @@ private:
 	Contact contacts[MAX_CONTACT];
 
 	static std::string truncateString(std::string s);
+
 public:
 	PhoneBook();
 

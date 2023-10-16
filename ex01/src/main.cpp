@@ -52,9 +52,9 @@ int main(void) {
 			input = promptForInput("Index: ");
 			try {
 				phonebook.printContactDetail(stoi(input));
-			} catch (const std::invalid_argument& e) {
+			} catch (const std::invalid_argument &e) {
 				std::cerr << "Error: Index must be an integer" << std::endl;
-			} catch (const std::out_of_range& e) {
+			} catch (const std::out_of_range &e) {
 				std::cerr << "Error: Index out of range" << std::endl;
 			}
 		} else if (operation == "EXIT") {
