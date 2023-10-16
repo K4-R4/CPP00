@@ -1,18 +1,22 @@
 CXX      := c++
 CXXFLAGS := -g -MMD -MP -Wall -Wextra -Werror -std=c++98
 DFLAGS   := -fsanitize=address -fsanitize=leaks -fsanitize=undefined -fsanitize=bounds
-INCLUDE  :=
+INCLUDE  := -I include
 NAME     := phonebook
-SRCS     := main.cpp
-OBJS     := $(SRCS:.cpp=.o)
+SRCDIR   := src
+SRCS     := src/Contact.cpp src/PhoneBook.cpp src/main.cpp
+OBJDIR   := obj
+OBJS     := $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.cpp=.o))
 DEPENDS  := $(OBJS:.o=.d)
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS)
+	echo $(OBJS)
 	$(CXX) -o $@ $^ $(INCLUDE) $(CXXFLAGS) $(if $(DEBUG),$(DFLAGS),)
 
-%.o: %.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@ mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) $(if $(DEBUG),$(DFLAGS),) $(INCLUDE) -o $@ -c $<
 
 clean:
@@ -25,6 +29,9 @@ re: fclean all
 
 debug:
 	make DEBUG=1
+
+cppfile:
+	find . -name "*.cpp" | sed 's/\.\///g' | tr '\n' ' '
 
 -include $(DEPENDS)
 
