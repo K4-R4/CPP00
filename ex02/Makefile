@@ -1,7 +1,7 @@
 CXX      := c++
 CXXFLAGS := -g -MMD -MP -Wall -Wextra -Werror -std=c++98
 DFLAGS   := -fsanitize=address -fsanitize=leaks -fsanitize=undefined -fsanitize=bounds
-INCLUDE  :=
+INCLUDE  := -I .
 NAME     := account
 SRCS     := Account.cpp tests.cpp
 OBJS     := $(SRCS:.cpp=.o)
