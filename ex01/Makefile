@@ -1,6 +1,6 @@
 CXX      := c++
 CXXFLAGS := -g -MMD -MP -Wall -Wextra -Werror -std=c++98
-DFLAGS   := -fsanitize=address -fsanitize=leaks -fsanitize=undefined -fsanitize=bounds
+DFLAGS   := -fsanitize=address -fsanitize=bounds
 INCLUDE  := -I include
 NAME     := phonebook
 SRCDIR   := src
