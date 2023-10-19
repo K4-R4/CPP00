@@ -6,7 +6,7 @@
 /*   By: kura <kura@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:01:43 by kura              #+#    #+#             */
-/*   Updated: 2023/10/16 23:01:34 by kura             ###   ########.fr       */
+/*   Updated: 2023/10/20 01:18:21 by kura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,4 @@ const std::string &Contact::getDarkestSecret() const {
 
 void Contact::setDarkestSecret(const std::string &darkestSecret) {
 	Contact::darkestSecret = darkestSecret;
-}
-
-bool Contact::isValidContact(void) {
-	return (!(this->firstName.empty() || this->lastName.empty() || this->nickname.empty()
-			  || this->phoneNumber.empty() || this->darkestSecret.empty()));
 }

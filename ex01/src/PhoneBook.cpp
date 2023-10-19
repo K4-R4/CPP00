@@ -40,10 +40,12 @@ void PhoneBook::printBriefContactList() {
 }
 
 void PhoneBook::printContactDetail(const int i) {
-	if (i < 0 || i >= PhoneBook::COLUMN_WIDTH) {
+	if (i < 0 || i >= PhoneBook::MAX_CONTACT) {
 		std::cerr << "Error: Index out of range" << std::endl;
 		return;
 	}
+	if (this->contacts[i].getFirstName().empty())
+		return;
 	std::cout << this->contacts[i].getFirstName() << std::endl;
 	std::cout << this->contacts[i].getLastName() << std::endl;
 	std::cout << this->contacts[i].getNickname() << std::endl;

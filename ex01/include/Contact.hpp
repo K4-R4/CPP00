@@ -42,8 +42,6 @@ public:
 	const std::string &getDarkestSecret() const;
 
 	void setDarkestSecret(const std::string &darkestSecret);
-
-	bool isValidContact();
 };
 
 #endif
