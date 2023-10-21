@@ -6,7 +6,7 @@
 /*   By: kura <kura@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:01:16 by kura              #+#    #+#             */
-/*   Updated: 2023/10/20 02:08:27 by kura             ###   ########.fr       */
+/*   Updated: 2023/10/21 10:39:49 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ std::string promptForInput(std::string msg, int (*f)(int c), std::string errMsg)
 	std::string input;
 
 	std::cout << msg;
-	if (!std::getline(std::cin, input) || input.empty())
+	if (!std::getline(std::cin, input)) {
+		std::cerr << "Error: Input was interrupted" << std::endl;
+		return ("");
+	}
+	if (input.empty())
 		std::cerr << "Error: Input is empty" << std::endl;
 	if (f) {
 		for (size_t i = 0; i < input.size(); i++) {
@@ -39,11 +43,10 @@ int main() {
 
 	do {
 		std::cout << "Enter ADD, SEARCH or EXIT" << std::endl;
-		if (std::cin.bad()) {
+		if (!std::getline(std::cin, operation)) {
 			std::cerr << "Error: Input was interrupted" << std::endl;
 			return (0);
 		}
-		std::getline(std::cin, operation);
 		if (operation == "ADD") {
 			Contact contact;
 			input = promptForInput("First name: ", NULL, "");
